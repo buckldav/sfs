@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fileserver API</title>
+</head>
+
+<body>
+    <h1>File Server API</h1>
+    <h3>Version v1.1</h3>
+
+    <p>GET /</p>
+    <ul>
+        <li>Returns quick API Guide</li>
+    </ul>
+
+    <p>POST /login</p>
+    <ul>
+        <li>
+            <b>Body:</b>
+            <br>
+            {<br>
+            &emsp;username: string,<br>
+            &emsp;password: string<br>
+            }
+        </li>
+        <li>Returns a bearer token to put in 'Authorization' header</li>
+        <ul>
+            <li>Authorization: 'Bearer [token]'</li>
+        </ul>
+    </ul>
+
+    <p>POST /createuser</p>
+    <ul>
+        <li>Must be authenticated with admin privileges.</li>
+        <li>Creates a user with specified permissions.</li>
+        <ul>
+            <li>
+                <b>Body:</b>
+                <br>
+                {<br>
+                &emsp;username: string,<br>
+                &emsp;password: string,<br>
+                &emsp;permission: 'user' | 'admin'<br>
+                }
+            </li>
+        </ul>
+    </ul>
+
+    <p>GET /file/?name=str&owner&str|undefined</p>
+    <ul>
+        <li>Must be authenticated.</li>
+        <li>Returns file by the name of the filename</li>
+    </ul>
+
+    <p>POST /file/?name=str&owner&str|undefined</p>
+    <ul>
+        <li>Must be authenticated.</li>
+        <li>Writes file by name of the filename</li>
+    </ul>
+</body>
+
+</html>
